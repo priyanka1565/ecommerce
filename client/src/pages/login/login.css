@@ -1,0 +1,16 @@
+.logo {
+    width: 20%;
+}
+
+.bg-img {
+    background-image: url('../../../public/dist/img/tourdubai/bg.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.login-row {
+    justify-content: end;
+}
