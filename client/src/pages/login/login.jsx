@@ -43,15 +43,17 @@ export default function Login() {
     return true
   }
 
-
-  const handleSubmit = async (e: any) => {
+  
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("")
-    setFieldError({username:[], password:[]})
+    setFieldError({ username: [], password: [] })
     validateForm()
     if(!isFormValid()){
       return false
-    }
+     
+}
     
     try {
       setShowLoader(true)
@@ -68,7 +70,9 @@ export default function Login() {
       } else {
         setErrorMessage("Something went wrong please try again")
       }
+      
     }
+    
   };
 
   return (
@@ -106,6 +110,7 @@ export default function Login() {
               <div className="input-group mb-3">
                 <input
                   type="text"
+                  id="name"
                   className={`${fieldError?.username?.length !== 0 ? 'form-control is-invalid' : 'form-control'}`}
                   placeholder="Username"
                   onChange={(e) => handleFormChange("username", e)}
@@ -131,6 +136,7 @@ export default function Login() {
               <div className="input-group mb-3">
                 <input
                   type="password"
+                  id="password"
                   className={`${fieldError?.password?.length !== 0 ? 'form-control is-invalid' : 'form-control'}`}
                   placeholder="Password"
                   onChange={(e) => handleFormChange("password", e)}
@@ -154,7 +160,7 @@ export default function Login() {
               <div className="row login-row">
                 {/* /.col */}
                 <div className="col-4 ">
-                  <button type="submit" className="btn btn-primary btn-block">
+                  <button type="submit"  className="btn btn-primary btn-block">
                     Sign In
                   </button>
                 </div>

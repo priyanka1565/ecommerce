@@ -1,12 +1,13 @@
 import axios from "axios";
 
 async function getUsers() {
-  // TODO: base url must come from env
+ 
   const requestUrl: string = "";
 }
 
 async function login(data) {
-  const requestUrl ="https://fakestoreapi.com/auth/login";
+  const requestUrl =
+    "https://admin.tourdubaireservations.com/bookings/api/v1/login/";
 
   const response = await axios.post(requestUrl, data);
   return response;
