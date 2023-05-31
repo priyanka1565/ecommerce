@@ -2,82 +2,45 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/loader/loader";
 import "./login.css"
+import axios from "axios";
 
-interface FieldErrorInterface {
-  username: string[];
-  password: string[];
-}
+
 
 export default function Login() {
-  const [username, setUserName] = useState("")
-  const [password, setPassword] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
-  const f:FieldErrorInterface={ username:[], password:[]}
-  const [fieldError, setFieldError] = useState(f)
-  const [showLoader, setShowLoader] = useState(false)
-  let navigate = useNavigate();
-  const handleFormChange =  (key:string, e: any) => {
-    if(key === "username") {
-      setUserName(e.target.value)
-    } else if (key === "password") {
-      setPassword(e.target.value)
-    }
-  }
+  const [state, setState] = useState({
+    name: "",
+    password: "",
+    
+  });
 
-  const validateForm =  () => {
-    const f:FieldErrorInterface={ username:[], password:[]}
-    if(username === "") {
-      f.username = ["This field may not be blank"]
-      setFieldError(f)
-    }
-    if(password === "") {
-      f.password = ["This field may not be blank"]
-      setFieldError(f)
-    }
-   
+  const handleChange = (filledName) => (e) => {
+    const { value } = e.target;
+    setState((preState) => ({
+      ...preState,
+      [filledName]: value,
+    }));
+    
   }
-  const isFormValid =  (): boolean => {
-    if(fieldError?.username?.length !== 0 || fieldError?.password?.length !== 0) {
-      return false
-    }
-    return true
-  }
+  console.log(state);
 
-  
-  
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage("")
-    setFieldError({ username: [], password: [] })
-    validateForm()
-    if(!isFormValid()){
-      return false
-     
-}
-    
-    try {
-      setShowLoader(true)
-      const response = await Login({ username: username, password: password });
-      localStorage.setItem("token", JSON.stringify(response.data));
-      setShowLoader(false)
-      navigate("/states");
-    } catch (error) {
-      setShowLoader(false)
-      if(error?.response?.status === 401) {
-        setErrorMessage(error?.response?.data?.detail);
-      }  else if(error?.response?.status === 400) {
-        setFieldError(error?.response?.data)
-      } else {
-        setErrorMessage("Something went wrong please try again")
-      }
-      
+    if (state) {
+      axios
+        .post("https://fakestoreapi.com/auth/login", {
+          method: "POST",
+          body: JSON.stringify(state)
+        })
+        .then((response) => {
+          console.log(response);
+        });
     }
-    
-  };
 
-  return (
+    
+  }
+return (
     <div className="hold-transition login-page bg-img">
-      {showLoader && <Loader/>}
+    
       <div className="login-box">
         <div className="login-logo">
           <img
@@ -89,8 +52,7 @@ export default function Login() {
         {/* /.login-logo */}
         <div className="card">
           <div className="card-body login-card-body">
-            {/* <p className="login-box-msg">Sign in</p> */}
-            {errorMessage !== "" &&
+            
               <div>
                 <div className="alert alert-danger alert-dismissible">
                   <button
@@ -101,19 +63,20 @@ export default function Login() {
                   >
                     ×
                   </button>
-                  {errorMessage}
+                  {/* {errorMessage} */}
                 </div>
               </div>
-            }
+            
             <form onSubmit={handleSubmit} autoComplete="off">
 
               <div className="input-group mb-3">
                 <input
                   type="text"
-                  id="name"
-                  className={`${fieldError?.username?.length !== 0 ? 'form-control is-invalid' : 'form-control'}`}
-                  placeholder="Username"
-                  onChange={(e) => handleFormChange("username", e)}
+                 
+                  className={`${''?.username?.length !== 0 ? 'form-control is-invalid' : 'form-control'}`}
+                placeholder="Username"
+                value={state.name}
+                 onChange={handleChange("name")}
                 />
 
                 <div className="input-group-append">
@@ -121,11 +84,11 @@ export default function Login() {
                     <span className="fas fa-user" />
                   </div>
                 </div>
-                {fieldError?.username?.length !== 0 &&
+                {''?.username?.length !== 0 &&
                   <span id="exampleInputEmail1-error" className="error invalid-feedback">
                     
                     {
-                      fieldError?.username?.map(e=>{
+                      ''?.username?.map(e=>{
                         return e
                       })
                     }
@@ -136,21 +99,21 @@ export default function Login() {
               <div className="input-group mb-3">
                 <input
                   type="password"
-                  id="password"
-                  className={`${fieldError?.password?.length !== 0 ? 'form-control is-invalid' : 'form-control'}`}
-                  placeholder="Password"
-                  onChange={(e) => handleFormChange("password", e)}
+                 className={`${''?.password?.length !== 0 ? 'form-control is-invalid' : 'form-control'}`}
+                placeholder="Password"
+                value={state.password}
+                 onChange={handleChange("password")}
                 />
                 <div className="input-group-append">
                   <div className="input-group-text">
                     <span className="fas fa-lock" />
                   </div>
                 </div>
-                {fieldError?.password?.length !== 0 &&
+                {''?.password?.length !== 0 &&
                   <span className="error invalid-feedback">
                     
                     {
-                      fieldError?.password?.map(e=>{
+                      ''?.password?.map(e=>{
                         return e
                       })
                     }
@@ -174,3 +137,8 @@ export default function Login() {
     </div>
   );
 }
+
+
+
+
+
