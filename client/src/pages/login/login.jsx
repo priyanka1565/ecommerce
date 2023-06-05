@@ -1,26 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./login.css"
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [forPassword, fortPassword] = useState("");
+  let arr = [];
+  const handleSubmit = (event) => {
+   event.preventDefault();
+    console.log(email, password);
+    let user_info = {
+      email: email,
+      password: password
+    }
+    arr.push(user_info);
+    //console.log(arr,"arr")
+    
+  }
+
   return (
-    <div class="box">
-      <span class="bordreLine"></span>
-      <form action="" onsubmit="formData()">
+    <div className="box">
+      <span className="bordreLine"></span>
+      <form action="" onSubmit={handleSubmit}>
         <h2>Sign in</h2>
-        <div class="inputBox">
-          <input type="text" id="email" />
+        <div className="inputBox">
+          <input type="text"  onChange={(e)=>setEmail(e.target.value)}/>
           <span>Email</span>
           <i></i>
         </div>
-        <div class="inputBox">
-          <input type="text" id="password" />
+        <div className="inputBox">
+          <input type="text" onChange={(e)=>setPassword(e.target.value)}/>
           <span>Password</span>
           <i></i>
         </div>
-        <div class="links">
+        <div className="links">
           <a href="#">Forgot Password</a>
           <a href="./signup.html">Signup</a>
         </div>
-        <input type="submit" value="Login" />
+        <input type="submit" />
       </form>
     </div>
   );
