@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import "./login.css"
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,36 +36,38 @@ const Login = () => {
  
 
   return (
-    <div className="box">
-      <span className="bordreLine"></span>
-      <form action="" onSubmit={handleSubmit}>
-        <h2>Sign in</h2>
-        <div className="inputBox">
-          <input
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-          {formErrors.email && <div>{formErrors.email}</div>}
-          <span>Email</span>
-          <i></i>
-        </div>
-        <div className="inputBox">
-          <input
-            type="text"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-          <span>Password</span>
-          <i></i>
-        </div>
-        <div className="links">
-          <a href="#">Forgot Password</a>
-          <a href="./signup.html">Signup</a>
-        </div>
-        <input type="submit" />
-      </form>
-      <ToastContainer/>
+    <div className='main_div'>
+      <div className="box">
+        <span className="bordreLine"></span>
+        <form action="" onSubmit={handleSubmit}>
+          <h2>Sign in</h2>
+          <div className="inputBox">
+            <input
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+            {formErrors.email && <div>{formErrors.email}</div>}
+            <span>Email</span>
+            <i></i>
+          </div>
+          <div className="inputBox">
+            <input
+              type="text"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+            <span>Password</span>
+            <i></i>
+          </div>
+          <div className="links">
+            <a href="#">Forgot Password</a>
+            <a href="./signup.html">Signup</a>
+          </div>
+          <input type="submit" />
+        </form>
+        <ToastContainer />
+      </div>
     </div>
   );
 }

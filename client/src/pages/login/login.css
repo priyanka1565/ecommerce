@@ -7,7 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+ .main_div {
     display: flex;
     align-items: center;
     justify-content: center;
