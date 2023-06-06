@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import "./product.css"
 const Product = () => {
     const [data, setData] = useState([]);
 
@@ -21,14 +21,15 @@ const Product = () => {
     },[])
 
   return (
-    <div>
+    <div className='product_main'>
           {data.map((data) => {
               return (
-                  <div>
+                  <div className='product_middle'>
                 <img src={ data.image} alt="" />
-                      <h4>{data.title}</h4>
+                      <h7>{data.title}</h7>
                       <h6>{data.category }</h6>
                       <p>{data.price}</p>
+                      <button>Add to cart</button>
                   </div>
                
               );

@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.product_main{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+   
+}
+.product_middle{
+   margin: auto;
+    height: 500px;
+    width: 400px;
+    border: 5px solid #32242a;
+    gap: 20px;
+    margin-top: 20px;
+   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+img{
+    margin-top: 20px;
+    margin-left: 35px;
+    height: 300px;
+    width: 300px;
+  
+}
+
+
+button {
+  
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+button:hover,
+button:focus {
+    background-color: #F082AC;
+}
