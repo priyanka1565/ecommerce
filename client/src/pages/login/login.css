@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #32242a;
+    background:url("http://localhost:3001/static/media/bg.ea9766ca28b667a09557.jpg");
 }
 
 .box {
