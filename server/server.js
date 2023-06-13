@@ -1,11 +1,12 @@
 const express = require("express");
-const DataBaseConnect = require("./database/databse")
+const DataBaseConnect = require("./database/databse");
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 app.use(express.json());
 
 app.use("/api/contacts",require("./routes/routes"))
-
+app.use(errorHandler);
 app.listen(8080, async() => {
     try {
         await DataBaseConnect.DataBaseConnect();
